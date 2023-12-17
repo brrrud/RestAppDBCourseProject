@@ -1,6 +1,7 @@
 package ru.databasePetProject.RestAppUniversityProject.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,9 +20,11 @@ public class Faculty {
     private int idFaculty;
 
     @Column(name = "name_faculty")
+    @NotNull
     private String nameFaculty;
 
     @Column(name = "phone_number")
+    @NotNull
     private String phoneNumber;
 
     @Column(name = "description")

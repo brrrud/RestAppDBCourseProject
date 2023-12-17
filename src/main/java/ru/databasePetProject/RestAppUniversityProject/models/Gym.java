@@ -1,8 +1,10 @@
 package ru.databasePetProject.RestAppUniversityProject.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.util.List;
@@ -17,10 +19,15 @@ public class Gym {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private short idGym;
+
     @Column(name = "address")
+    @NotNull
     private String address;
+
     @Column(name = "rating")
+    @NotNull
     private double rating;
+
     @Column(name = "schedule")
     private String schedule;
 

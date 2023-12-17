@@ -3,9 +3,11 @@ package ru.databasePetProject.RestAppUniversityProject.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.lang.NonNull;
 
 import java.util.List;
@@ -21,29 +23,40 @@ public class University {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idUniversity;
 
-    @Column(name = "name")
-    @NonNull
+    @Column(name = "name", unique = true)
+    @NotNull
     private String name;
 
-    @Column(name = "address")
+    @Column(name = "address", unique = true)
+    @NotNull
     private String address;
 
     @Column(name = "rating")
+    @NotNull
+    @DecimalMin(value = "0", message = "Rating must be greater than or equal to 0")
+    @DecimalMax(value = "10", message = "Rating must be less than or equal to 10")
     private double rating;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
+    @Email
+    @NotNull
     private String email;
 
-    @Column(name = "website")
+    @Column(name = "website", unique = true)
+    @NotNull
     private String website;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", unique = true)
+    @NotNull
+    @Pattern(regexp="^\\+[0-9]{1,3} \\([0-9]{3}\\) [0-9]{3}-[0-9]{2}-[0-9]{2}$", message = "Phone number must be in the format +7 (999) 123-45-67")
     private String phoneNumber;
 
     @Column(name = "government_funding")
+    @NotNull
     private boolean hasGovernmentFunding;
 
     @Column(name = "military_center")
+    @NotNull
     private boolean hasMilitaryCenter;
 
     @Column(name = "description")
@@ -61,6 +74,7 @@ public class University {
     @JsonIgnore
     @OneToOne(mappedBy = "universityOwner")
     private CultureHouse cultureHouse;
+
     @JsonIgnore
     @OneToMany(mappedBy = "universityOwner")
     private List<Faculty> faculties;
