@@ -238,4 +238,5 @@
                                  referencedTableName="university"/>
     </changeSet>
 
+
 </databaseChangeLog>
