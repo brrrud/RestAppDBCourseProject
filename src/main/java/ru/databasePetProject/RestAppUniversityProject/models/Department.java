@@ -20,7 +20,7 @@ public class Department {
     private int idDepartment;
 
     @ManyToOne
-    @JoinColumn(name = "fk_id_department", referencedColumnName = "id_department")
+    @JoinColumn(name = "fk_id_faculty", referencedColumnName = "id_faculty")
     private Faculty facultyOwner;
 
     @OneToMany(mappedBy = "departmentOwner", cascade = CascadeType.PERSIST)

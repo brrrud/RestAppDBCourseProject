@@ -37,7 +37,7 @@ public class Gym {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private University universityOwner;
 
-    @OneToMany(mappedBy = "gymOwner", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "gymOwner", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<GymActivity> gymActivities;
 
     public Gym(String address, double rating, String schedule, University universityOwner) {

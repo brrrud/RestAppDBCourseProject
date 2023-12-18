@@ -1,6 +1,6 @@
 package ru.databasePetProject.RestAppUniversityProject.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -74,7 +74,7 @@ public class University {
     private List<Gym> gyms;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "universityOwner")
+    @OneToOne(mappedBy = "universityOwner", cascade = CascadeType.ALL, orphanRemoval = true)
     private CultureHouse cultureHouse;
 
     @JsonIgnore

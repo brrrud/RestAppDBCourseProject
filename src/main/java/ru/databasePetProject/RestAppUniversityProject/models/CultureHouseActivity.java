@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Setter
 @Getter
@@ -27,6 +29,7 @@ public class CultureHouseActivity {
 
     @ManyToOne
     @JoinColumn(name = "fk_id_culture_house", referencedColumnName = "id_culture_house")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private CultureHouse cultureHouseOwner;
 
     public CultureHouseActivity(String nameActivity, String description, CultureHouse cultureHouseOwner) {

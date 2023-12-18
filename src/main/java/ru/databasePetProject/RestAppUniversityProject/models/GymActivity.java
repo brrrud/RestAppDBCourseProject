@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Setter
@@ -24,6 +26,7 @@ public class GymActivity {
 
     @ManyToOne
     @JoinColumn(name = "fk_id_gym", referencedColumnName = "id_gym")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Gym gymOwner;
 
     public GymActivity(String nameActivity, String gymActivityTrainer, Gym gymOwner) {

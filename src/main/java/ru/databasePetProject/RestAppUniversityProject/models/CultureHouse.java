@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.List;
 
@@ -28,11 +30,11 @@ public class CultureHouse {
     @Column(name = "schedule")
     private String schedule;
 
-    @OneToOne()
+    @OneToOne
     @JoinColumn(name = "fk_id_university", referencedColumnName = "id_university")
     private University universityOwner;
 
-    @OneToMany(mappedBy = "cultureHouseOwner", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "cultureHouseOwner", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<CultureHouseActivity> cultureHouseActivities;
     public CultureHouse(String address, double rating, String schedule, University universityOwner) {
         this.address = address;
