@@ -2,6 +2,7 @@ package ru.databasePetProject.RestAppUniversityProject.models;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class CultureHouseActivity {
     private short idCultureHouseActivity;
 
     @Column(name = "name_activity")
+    @NotNull
     private String nameActivity;
 
     @Column(name = "description")

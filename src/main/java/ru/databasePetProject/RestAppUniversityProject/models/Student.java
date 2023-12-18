@@ -1,6 +1,7 @@
 package ru.databasePetProject.RestAppUniversityProject.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,8 +20,10 @@ public class Student {
     private StudyGroup studyGroupOwner;
 
     @Column(name = "free_education_cost")
+    @NotNull
     private boolean freeEducationCost;
 
     @Column(name ="student_passing_score")
+    @NotNull
     private short studentPassingScore;
 }

@@ -16,10 +16,13 @@ public class DiningRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private short idDiningRoom;
+
     @Column(name = "address")
     private String address;
+
     @Column(name = "rating")
     private double rating;
+
     @Column(name = "schedule")
     private String schedule;
 

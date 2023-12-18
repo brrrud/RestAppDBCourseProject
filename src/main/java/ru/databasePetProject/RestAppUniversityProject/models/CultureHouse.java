@@ -1,9 +1,9 @@
 package ru.databasePetProject.RestAppUniversityProject.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 
 import java.util.List;
@@ -18,11 +18,13 @@ public class CultureHouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private short idCultureHouse;
-    @NonNull
+    @NotNull
     @Column(name = "address")
     private String address;
+
     @Column(name = "rating")
     private double rating;
+
     @Column(name = "schedule")
     private String schedule;
 

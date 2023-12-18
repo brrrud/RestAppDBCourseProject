@@ -2,6 +2,8 @@ package ru.databasePetProject.RestAppUniversityProject.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,12 +25,17 @@ public class Dormitory {
     private String address;
 
     @Column(name = "available_places")
+    @NotNull
+    @Size
     private short availablePlaces;
 
     @Column(name = "all_places")
+    @NotNull
+    @Size
     private short allPlaces;
 
     @Enumerated(EnumType.ORDINAL)
+    @NotNull
     private DormitoryRoomsType dormitoryRoomsType;
 //    @Column(name="dormitory_type_room")
 //    private int dormitoryRoomsType;
