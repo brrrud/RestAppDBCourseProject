@@ -20,7 +20,7 @@ public class Dormitory {
     @Id
     @Column(name = "id_dormitory")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long dormitoryId;
+    private long dormitoryId;
 
     @Column(name = "address")
     private String address;

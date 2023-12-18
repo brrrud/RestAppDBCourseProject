@@ -19,7 +19,7 @@ public class CultureHouse {
     @Column(name = "id_culture_house")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private short idCultureHouse;
+    private long idCultureHouse;
     @NotNull
     @Column(name = "address")
     private String address;

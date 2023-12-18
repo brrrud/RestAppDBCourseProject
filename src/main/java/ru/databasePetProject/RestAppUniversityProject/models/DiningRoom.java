@@ -17,7 +17,7 @@ public class DiningRoom {
     @Column(name = "id_dining_room")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private short idDiningRoom;
+    private long idDiningRoom;
 
     @Column(name = "address")
     private String address;

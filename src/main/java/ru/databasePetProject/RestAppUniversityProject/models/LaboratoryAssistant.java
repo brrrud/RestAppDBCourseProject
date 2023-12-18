@@ -2,6 +2,7 @@ package ru.databasePetProject.RestAppUniversityProject.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class LaboratoryAssistant {
 
     @Column(name = "hours_in_laboratory_per_week")
     @NotNull
+    @Size(max = 40)
     private short hoursInLaboratoryPerWeek;
 
     @Column(name = "position")
