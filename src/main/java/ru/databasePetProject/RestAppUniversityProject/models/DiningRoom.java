@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "dining_room")
@@ -28,6 +30,7 @@ public class DiningRoom {
 
     @ManyToOne
     @JoinColumn(name = "fk_id_university", referencedColumnName = "id_university")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private University universityOwner;
 
     public DiningRoom(String address, double rating, String schedule, University universityOwner) {

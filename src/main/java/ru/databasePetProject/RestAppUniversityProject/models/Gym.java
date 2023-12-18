@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class Gym {
 
     @ManyToOne
     @JoinColumn(name = "fk_id_university", referencedColumnName = "id_university")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private University universityOwner;
 
     @OneToMany(mappedBy = "gymOwner", cascade = CascadeType.PERSIST)

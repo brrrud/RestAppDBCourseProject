@@ -26,6 +26,9 @@ public class Department {
     @OneToMany(mappedBy = "departmentOwner", cascade = CascadeType.PERSIST)
     private List<EducationalDirection> educationalDirections;
 
+    @OneToMany(mappedBy = "laboratoryOwner")
+    private List<Laboratory>laboratories;
+
     public Department(Faculty facultyOwner, List<EducationalDirection> educationalDirections) {
         this.educationalDirections =  educationalDirections;
     }

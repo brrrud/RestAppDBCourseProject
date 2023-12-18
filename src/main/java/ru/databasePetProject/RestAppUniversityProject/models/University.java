@@ -62,20 +62,23 @@ public class University {
     private String description;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "universityOwner", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "universityOwner", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Dormitory> dormitories;
+
     @JsonIgnore
-    @OneToMany(mappedBy = "universityOwner", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "universityOwner", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<DiningRoom> diningRooms;
+
     @JsonIgnore
-    @OneToMany(mappedBy = "universityOwner", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "universityOwner", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Gym> gyms;
+
     @JsonIgnore
     @OneToOne(mappedBy = "universityOwner")
     private CultureHouse cultureHouse;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "universityOwner")
+    @OneToMany(mappedBy = "universityOwner", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Faculty> faculties;
 
     public University(String name,

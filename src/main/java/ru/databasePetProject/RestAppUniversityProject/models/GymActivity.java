@@ -18,11 +18,17 @@ public class GymActivity {
 
     @Column(name = "name_activity")
     private String nameActivity;
+
+    @Column(name = "gym_activity_trainer")
+    private String gymActivityTrainer;
+
     @ManyToOne
     @JoinColumn(name = "fk_id_gym", referencedColumnName = "id_gym")
     private Gym gymOwner;
-    public GymActivity(String nameActivity, Gym gymOwner) {
+
+    public GymActivity(String nameActivity, String gymActivityTrainer, Gym gymOwner) {
         this.nameActivity = nameActivity;
+        this.gymActivityTrainer = gymActivityTrainer;
         this.gymOwner = gymOwner;
     }
 }

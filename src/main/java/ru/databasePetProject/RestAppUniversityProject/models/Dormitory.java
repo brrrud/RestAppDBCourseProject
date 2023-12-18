@@ -1,6 +1,5 @@
 package ru.databasePetProject.RestAppUniversityProject.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -8,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @ToString
 @Getter
@@ -37,8 +38,6 @@ public class Dormitory {
     @Enumerated(EnumType.ORDINAL)
     @NotNull
     private DormitoryRoomsType dormitoryRoomsType;
-//    @Column(name="dormitory_type_room")
-//    private int dormitoryRoomsType;
 
     @Column(name = "rating")
     private double rating;
@@ -49,6 +48,7 @@ public class Dormitory {
 
     @ManyToOne
     @JoinColumn(name = "fk_id_university", referencedColumnName = "id_university")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private University universityOwner;
 
     public Dormitory(String address, short availablePlaces, short allPlaces, DormitoryRoomsType dormitoryRoomsType, double rating, String description, University universityOwner) {
