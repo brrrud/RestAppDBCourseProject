@@ -19,6 +19,9 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idDepartment;
 
+    @Column(name = "name_department")
+    private String nameDepartment;
+
     @ManyToOne
     @JoinColumn(name = "fk_id_faculty", referencedColumnName = "id_faculty")
     private Faculty facultyOwner;
@@ -29,6 +32,7 @@ public class Department {
     @OneToMany(mappedBy = "laboratoryOwner")
     private List<Laboratory>laboratories;
 
+
     public Department(Faculty facultyOwner, List<EducationalDirection> educationalDirections) {
         this.educationalDirections =  educationalDirections;
     }
@@ -36,6 +40,7 @@ public class Department {
     public int getEducationalDirectionsCount() {
         return (educationalDirections.size());
     }
+
 
 
 }
