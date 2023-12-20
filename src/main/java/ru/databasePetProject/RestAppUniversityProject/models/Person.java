@@ -16,9 +16,10 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Builder
-@AllArgsConstructor
+
 @Table(name = "person", indexes = @Index(name = "idx_person_username",
         columnList = "username", unique = true))
+@AllArgsConstructor
 public class Person implements UserDetails {
     @Id
     @Column(name = "id_person")
@@ -35,8 +36,11 @@ public class Person implements UserDetails {
     @Column(name = "role")
     private Role role;
 
+
     @OneToMany(mappedBy = "person")
     private List<Token> tokens;
+
+
 
 
     @Override

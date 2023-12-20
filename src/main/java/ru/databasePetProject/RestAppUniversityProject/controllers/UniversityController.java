@@ -3,6 +3,7 @@ package ru.databasePetProject.RestAppUniversityProject.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/university")
+@PreAuthorize("hasRole('USER')")
 public class UniversityController {
     private final UniversityService universityService;
 
@@ -26,9 +28,15 @@ public class UniversityController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('USER:READ')")
     public ResponseEntity<University> getUniversityById(@PathVariable("id") long id) {
+        try{
         University university = universityService.getUniversityById(id);
         return new ResponseEntity<>(university, HttpStatus.OK);
+    }catch (Exception ex) {
+            //TODO:logs
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @GetMapping("/byFilter")
