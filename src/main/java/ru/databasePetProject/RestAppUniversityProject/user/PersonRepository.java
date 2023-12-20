@@ -1,4 +1,4 @@
-package ru.databasePetProject.RestAppUniversityProject.repositories;
+package ru.databasePetProject.RestAppUniversityProject.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.databasePetProject.RestAppUniversityProject.models.Person;

@@ -7,7 +7,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import ru.databasePetProject.RestAppUniversityProject.models.University;
-import ru.databasePetProject.RestAppUniversityProject.security.PersonDetails;
 import ru.databasePetProject.RestAppUniversityProject.services.UniversityService;
 
 import java.util.List;
@@ -64,14 +63,7 @@ public class UniversityController {
         University updatedUniversity = universityService.updateUniversity(university);
         return ResponseEntity.ok("University with ID: " + updatedUniversity.getIdUniversity() + " has been updated");
     }
-    @GetMapping("/showUserInfo")
-    public String showUserInfo() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
-        System.out.println(personDetails.getUser());
 
-        return "hello";
-    }
 
 
 
