@@ -1,5 +1,6 @@
 package ru.databasePetProject.RestAppUniversityProject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -35,8 +36,10 @@ public class Faculty {
     @ManyToOne
     @JoinColumn(name = "fk_id_university", referencedColumnName = "id_university")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private University universityOwner;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "facultyOwner")
     List<Department> departments;
 

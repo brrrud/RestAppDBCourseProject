@@ -39,11 +39,9 @@ public class EducationalDirection {
     private Department departmentOwner;
 
 
-    @ElementCollection(targetClass = EducationalDirectionSubjectsRequired.class)
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "direction_subjects", joinColumns = @JoinColumn(name = "id_educational_direction"))
+
     @Column(name = "subject")
-    private Set<EducationalDirectionSubjectsRequired> subjectsRequired;
+    private String subjectsRequired;
 
     @OneToMany(mappedBy = "studyGroupOwner", cascade = CascadeType.PERSIST)
     private List<StudyGroup> studyGroups;
@@ -53,7 +51,7 @@ public class EducationalDirection {
                                 EducationalType educationalType,
                                 long educationalCost,
                                 String nameEducationalDirection,
-                                Set<EducationalDirectionSubjectsRequired>subjectsRequired,
+                                String subjectsRequired,
                                 List<StudyGroup> studyGroups) {
         this.countPlaces = countPlaces;
         this.educationalType = educationalType;

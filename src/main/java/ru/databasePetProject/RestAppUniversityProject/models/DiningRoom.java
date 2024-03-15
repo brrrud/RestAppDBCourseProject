@@ -1,6 +1,7 @@
 package ru.databasePetProject.RestAppUniversityProject.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class DiningRoom {
     @ManyToOne
     @JoinColumn(name = "fk_id_university", referencedColumnName = "id_university")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private University universityOwner;
 
     public DiningRoom(String address, double rating, String schedule, University universityOwner) {
